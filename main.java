@@ -28,16 +28,24 @@ public class main {
         return listaOcen;
     }
 
+    private static double obliczSrednia(double[] ocenyUcznia) {
+      double sumaOcen = 0;
+      for (double ocena : ocenyUcznia) {
+          sumaOcen += ocena;
+      }
+      return sumaOcen / ocenyUcznia.length;
+  }
+
     public static void wyswietlOcenyISrednie(ArrayList<double[]> listaOcen, int liczbaPrzedmiotow) {
-        for (int i = 0; i < listaOcen.size(); i++) {
-            double[] ocenyUcznia = listaOcen.get(i); 
-            double sumaOcen = 0;
-            for (int j = 0; j < liczbaPrzedmiotow; j++) {
-                sumaOcen += ocenyUcznia[j];
-            }
-            double sredniaOcen = sumaOcen / liczbaPrzedmiotow;
-            System.out.println("Oceny ucznia " + (i + 1) + ": " + java.util.Arrays.toString(ocenyUcznia));
-            System.out.println("Średnia ocen ucznia " + (i + 1) + ": " + sredniaOcen);
-        }
+      for (int i = 0; i < listaOcen.size(); i++) {
+        double[] ocenyUcznia = listaOcen.get(i); 
+        double sumaOcenUcznia = 0;
+            for (double ocena : ocenyUcznia) {
+                sumaOcenUcznia += ocena;
+            };
+        System.out.println("Oceny ucznia " + (i + 1) + ": " + java.util.Arrays.toString(ocenyUcznia));
+        System.out.println("Suma ocen ucznia " + (i + 1) + ": " + sumaOcenUcznia);
+        System.out.println("Średnia ocen ucznia " + (i + 1) + ": " + obliczSrednia(ocenyUcznia));
+    }
     }
 }
