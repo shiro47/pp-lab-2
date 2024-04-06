@@ -20,13 +20,20 @@ public class main {
         for (int i = 0; i < liczbaUczniow; i++) {
             double[] ocenyUcznia = new double[liczbaPrzedmiotow];
             for (int j = 0; j < liczbaPrzedmiotow; j++) {
-                System.out.print("Podaj ocenę ucznia " + (i + 1) + " z przedmiotu " + (j + 1) + ": ");
-                ocenyUcznia[j] = scanner.nextDouble();   
-            }
-            listaOcen.add(ocenyUcznia);
-        }
-        return listaOcen;
-    }
+              double ocena;
+              do {
+                  System.out.print("Podaj ocenę ucznia " + (i + 1) + " z przedmiotu " + (j + 1) + ": ");
+                  ocena = scanner.nextDouble();
+                  if (ocena <= 0 || ocena >= 6) {
+                      System.out.println("Błędna ocena! Podaj dodatnią ocenę mniejszą niż 6.");
+                  }
+              } while (ocena <= 0 || ocena >= 6);
+              ocenyUcznia[j] = ocena;   
+          }
+          listaOcen.add(ocenyUcznia);
+      }
+      return listaOcen;
+  }
 
     private static double obliczSrednia(double[] ocenyUcznia) {
       double sumaOcen = 0;
